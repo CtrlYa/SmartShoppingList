@@ -1,6 +1,7 @@
 package com.example.smartshoppinglist.ui.main.shopping_list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import com.example.smartshoppinglist.R
 
 class ShoppingListFragment() : Fragment() {
 
+    private final val TAG = "ФРАГМЕНТ СПИСКА ПОКУПОК";
     private lateinit var shoppingListViewModel: ShoppingListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,12 +28,15 @@ class ShoppingListFragment() : Fragment() {
         val recyclerView = root.findViewById<RecyclerView>(R.id.shopping_list)
         val shoppingListAdapter = shoppingListViewModel.getData().value?.let { ShoppingListAdapter(it) }
         shoppingListViewModel.getData().observe(this, Observer {
+            Log.d(TAG, "onCreateView: $it")
             shoppingListAdapter?.setValues(it)
         })
         recyclerView.adapter = shoppingListAdapter
 
         return root
     }
+
+
 
     companion object {
         /**
@@ -47,11 +52,11 @@ class ShoppingListFragment() : Fragment() {
         @JvmStatic
         fun newInstance(sectionNumber: Int): ShoppingListFragment {
             return ShoppingListFragment()
-                    .apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_SECTION_NUMBER, sectionNumber)
-                }
-            }
+//                    .apply {
+//                arguments = Bundle().apply {
+//                    putInt(ARG_SECTION_NUMBER, sectionNumber)
+//                }
+//            }
         }
     }
 }
