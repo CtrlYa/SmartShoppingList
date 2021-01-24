@@ -6,6 +6,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.smartshoppinglist.R
+import com.example.smartshoppinglist.ui.main.fridge.FridgeFragment
+import com.example.smartshoppinglist.ui.main.shopping_list.ShoppingListFragment
 
 private val TAB_TITLES = arrayOf(
         R.string.tab_text_1,
@@ -24,7 +26,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager)
         // Return a PlaceholderFragment (defined as a static inner class below).
         return when(position) {
             0 -> FridgeFragment.newInstance(position + 1)
-//            1 -> ShoppingListFragment.newInstance(position + 1);
+            1 -> ShoppingListFragment.newInstance(position + 1);
             else -> FridgeFragment.newInstance(position + 1)
         }
     }

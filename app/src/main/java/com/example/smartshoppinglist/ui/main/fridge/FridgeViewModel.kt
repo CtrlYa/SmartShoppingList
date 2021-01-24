@@ -1,4 +1,4 @@
-package com.example.smartshoppinglist.ui.main
+package com.example.smartshoppinglist.ui.main.fridge
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

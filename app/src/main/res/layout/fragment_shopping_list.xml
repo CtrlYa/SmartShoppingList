@@ -5,19 +5,11 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.FridgeFragment">
+    tools:context=".ui.main.fridge.FridgeFragment">
 
-
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/shopping_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="53dp">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/shopping_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+        app:layoutManager="LinearLayoutManager" />
 </androidx.constraintlayout.widget.ConstraintLayout>

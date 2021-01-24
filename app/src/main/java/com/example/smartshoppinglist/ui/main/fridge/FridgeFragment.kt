@@ -1,34 +1,37 @@
-package com.example.smartshoppinglist.ui.main
+package com.example.smartshoppinglist.ui.main.fridge
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import com.example.smartshoppinglist.R
 
-class ShoppingListFragment() : Fragment() {
+/**
+ * A placeholder fragment containing a simple view.
+ */
+class FridgeFragment : Fragment() {
 
-    private lateinit var shoppingListViewModel: ShoppingListViewModel
+    private lateinit var pageViewModel: FridgeViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        shoppingListViewModel = ViewModelProvider(this).get(ShoppingListViewModel::class.java)
-//                .apply {
-//            setIndex(arguments?.getInt(ShoppingListFragment.ARG_SECTION_NUMBER) ?: 1)
-//        }
+        pageViewModel = ViewModelProvider(this).get(FridgeViewModel::class.java).apply {
+            setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?
+            savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_shopping_list, container, false)
-//        val recyclerView = root.findViewById<RecyclerView>(R.id.shopping_list)
-//        val shoppingListAdapter = context?.let { ShoppingListAdapter(it) }
-//        recyclerView.adapter = shoppingListAdapter
-
+        val root = inflater.inflate(R.layout.fragment_fridge, container, false)
+        val textView: TextView = root.findViewById(R.id.fridge_label)
+        pageViewModel.text.observe(this, Observer<String> {
+            textView.text = it
+        })
         return root
     }
 
