@@ -8,12 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smartshoppinglist.R
 
 class ShoppingListFragment() : Fragment() {
 
-    private final val TAG = "ФРАГМЕНТ СПИСКА ПОКУПОК";
+    private final val TAG = "ShoppingList";
     private lateinit var shoppingListViewModel: ShoppingListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,16 +27,21 @@ class ShoppingListFragment() : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_shopping_list, container, false)
         val recyclerView = root.findViewById<RecyclerView>(R.id.shopping_list)
-        val shoppingListAdapter = shoppingListViewModel.getData().value?.let { ShoppingListAdapter(it) }
-        shoppingListViewModel.getData().observe(this, Observer {
-            Log.d(TAG, "onCreateView: $it")
-            shoppingListAdapter?.setValues(it)
-        })
+        val shoppingListAdapter = ShoppingListAdapter()
         recyclerView.adapter = shoppingListAdapter
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+        shoppingListViewModel.getData().observe(this, Observer {
+            Log.d(TAG, "onCreateView: ${it.size}")
+            shoppingListAdapter.setValues(it)
+            shoppingListAdapter.notifyDataSetChanged()
+        })
 
         return root
     }
 
+    fun addData(str: String) {
+        shoppingListViewModel.addStr(str)
+    }
 
 
     companion object {

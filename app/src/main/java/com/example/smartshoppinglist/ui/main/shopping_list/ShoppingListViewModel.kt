@@ -13,4 +13,9 @@ class ShoppingListViewModel: ViewModel() {
         return data
     }
 
+    fun addStr(str: String) {
+        values.add(str)
+        data.value = values
+    }
+
 }
