@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.smartshoppinglist.R
 
-class ShoppingListAdapter(private val values: MutableList<String>) : RecyclerView.Adapter<ShoppingListAdapter.ListItemHolder>() {
+class ShoppingListAdapter() : RecyclerView.Adapter<ShoppingListAdapter.ListItemHolder>() {
+
+    private val values: MutableList<String> = mutableListOf()
 
     inner class ListItemHolder(view: View) : ViewHolder(view) {
         val itemInfo = view.findViewById<TextView>(R.id.item_info)

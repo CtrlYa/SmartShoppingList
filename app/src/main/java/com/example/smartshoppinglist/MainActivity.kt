@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.smartshoppinglist.ui.main.SectionsPagerAdapter
 import com.example.smartshoppinglist.ui.main.TAB_TITLES
+import com.example.smartshoppinglist.ui.main.shopping_list.ShoppingListFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
@@ -25,6 +26,10 @@ class MainActivity : FragmentActivity() {
         val fab: FloatingActionButton = findViewById(R.id.fab)
 
         fab.setOnClickListener { view ->
+            val myFragment = supportFragmentManager.findFragmentByTag("f" + 1)
+            myFragment?.let {
+                (it as ShoppingListFragment).addData("qqq")
+            }
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
