@@ -9,15 +9,19 @@ import java.time.ZoneId
 
 class LocalDateTypeConverter() {
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    @TypeConverter
-    fun toEpochSecond(date: LocalDate): Long {
-        return date.atStartOfDay(ZoneId.systemDefault()).toEpochSecond()
-    }
+    companion object {
+        @RequiresApi(Build.VERSION_CODES.O)
+        @JvmStatic
+        @TypeConverter
+        fun fromExpirationDate(date: LocalDate): Long {
+            return date.atStartOfDay(ZoneId.systemDefault()).toEpochSecond()
+        }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    @TypeConverter
-    fun toLocalDate(millis: Long): LocalDate {
-        return Instant.ofEpochSecond(millis).atZone(ZoneId.systemDefault()).toLocalDate()
+        @RequiresApi(Build.VERSION_CODES.O)
+        @JvmStatic
+        @TypeConverter
+        fun toExpirationDate(millis: Long): LocalDate {
+            return Instant.ofEpochSecond(millis).atZone(ZoneId.systemDefault()).toLocalDate()
+        }
     }
 }

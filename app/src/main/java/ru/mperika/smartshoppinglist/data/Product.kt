@@ -8,6 +8,7 @@ import ru.mperika.smartshoppinglist.db.type_converters.LocalDateTypeConverter
 import java.time.LocalDate
 
 @Entity(tableName = "products")
+@TypeConverters(ProductCategory::class, LocalDateTypeConverter::class)
 data class Product(
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = "pr_id")
@@ -17,12 +18,10 @@ data class Product(
         @ColumnInfo(name = "pr_brand")
         var productBrand: String,
         @ColumnInfo(name = "pr_category", defaultValue = "999")
-        @TypeConverters(ProductCategory::class)
         var category: ProductCategory = ProductCategory.OTHER,
         @ColumnInfo(name = "pr_quantity", defaultValue = "0")
         var quantity: Int = 0,
         @ColumnInfo(name = "pr_exp_date", defaultValue = "0")
-        @TypeConverters(LocalDateTypeConverter::class)
         var expirationDate: LocalDate,
         @ColumnInfo(name = "pr_image", defaultValue = "")
         var imagePath: String

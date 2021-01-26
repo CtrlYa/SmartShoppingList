@@ -8,14 +8,18 @@ enum class ProductCategory(var id: Int, name: String) {
     OTHER(999, "Другое");
 
 
-    @TypeConverter
-    fun getID(): Int {
-        return id
-    }
+
 
     companion object {
+        @JvmStatic
         @TypeConverter
-        fun getCategory(id: Int) : ProductCategory {
+        fun fromProductCategory(category: ProductCategory): Int {
+            return category.id
+        }
+
+        @JvmStatic
+        @TypeConverter
+        fun toProductCategory(id: Int) : ProductCategory {
             var value = values().find { category -> (category.id == id) }
             return value?: OTHER
         }
