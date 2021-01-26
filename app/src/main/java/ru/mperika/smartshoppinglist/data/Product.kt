@@ -1,10 +1,10 @@
-package com.example.smartshoppinglist.data
+package ru.mperika.smartshoppinglist.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.example.smartshoppinglist.db.type_converters.LocalDateTypeConverter
+import ru.mperika.smartshoppinglist.db.type_converters.LocalDateTypeConverter
 import java.time.LocalDate
 
 @Entity(tableName = "products")

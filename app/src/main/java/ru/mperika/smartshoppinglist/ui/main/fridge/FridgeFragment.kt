@@ -1,4 +1,4 @@
-package com.example.smartshoppinglist.ui.main.fridge
+package ru.mperika.smartshoppinglist.ui.main.fridge
 
 import android.os.Bundle
 import android.view.LayoutInflater

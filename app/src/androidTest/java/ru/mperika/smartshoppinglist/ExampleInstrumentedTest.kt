@@ -1,4 +1,4 @@
-package com.example.smartshoppinglist
+package ru.mperika.smartshoppinglist
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

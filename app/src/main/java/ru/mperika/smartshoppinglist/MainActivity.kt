@@ -1,11 +1,12 @@
-package com.example.smartshoppinglist
+package ru.mperika.smartshoppinglist
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
-import com.example.smartshoppinglist.ui.main.SectionsPagerAdapter
-import com.example.smartshoppinglist.ui.main.TAB_TITLES
-import com.example.smartshoppinglist.ui.main.shopping_list.ShoppingListFragment
+import com.example.smartshoppinglist.R
+import ru.mperika.smartshoppinglist.ui.main.SectionsPagerAdapter
+import ru.mperika.smartshoppinglist.ui.main.TAB_TITLES
+import ru.mperika.smartshoppinglist.ui.main.shopping_list.ShoppingListFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout

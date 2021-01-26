@@ -1,4 +1,4 @@
-package com.example.smartshoppinglist.data
+package ru.mperika.smartshoppinglist.data
 
 import androidx.room.TypeConverter
 

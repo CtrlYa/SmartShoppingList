@@ -1,4 +1,4 @@
-package com.example.smartshoppinglist.ui.main.shopping_list
+package ru.mperika.smartshoppinglist.ui.main.shopping_list
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

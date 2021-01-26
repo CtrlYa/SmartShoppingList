@@ -1,4 +1,4 @@
-package com.example.smartshoppinglist.db.type_converters
+package ru.mperika.smartshoppinglist.db.type_converters
 
 import android.os.Build
 import androidx.annotation.RequiresApi

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartShoppingList">
         <activity
-            android:name=".MainActivity"
+            android:name="ru.mperika.smartshoppinglist.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.SmartShoppingList.NoActionBar">
             <intent-filter>

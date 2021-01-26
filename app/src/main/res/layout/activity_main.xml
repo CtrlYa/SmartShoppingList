@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context="ru.mperika.smartshoppinglist.MainActivity">
 
     <LinearLayout
         android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".MainActivity">
+        tools:context="ru.mperika.smartshoppinglist.MainActivity">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"

@@ -1,12 +1,11 @@
-package com.example.smartshoppinglist.ui.main
+package ru.mperika.smartshoppinglist.ui.main
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.smartshoppinglist.R
-import com.example.smartshoppinglist.ui.main.fridge.FridgeFragment
-import com.example.smartshoppinglist.ui.main.shopping_list.ShoppingListFragment
+import ru.mperika.smartshoppinglist.ui.main.fridge.FridgeFragment
+import ru.mperika.smartshoppinglist.ui.main.shopping_list.ShoppingListFragment
 
 val TAB_TITLES = arrayOf(
     "Холодос",

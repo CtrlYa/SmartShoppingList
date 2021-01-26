@@ -1,4 +1,4 @@
-package com.example.smartshoppinglist.db
+package ru.mperika.smartshoppinglist.db
 
 import androidx.room.Dao
 
