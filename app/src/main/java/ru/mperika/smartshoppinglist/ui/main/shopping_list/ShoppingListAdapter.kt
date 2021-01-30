@@ -13,7 +13,7 @@ class ShoppingListAdapter() : RecyclerView.Adapter<ShoppingListAdapter.ListItemH
     private val values: MutableList<String> = mutableListOf()
 
     inner class ListItemHolder(view: View) : ViewHolder(view) {
-        val itemInfo = view.findViewById<TextView>(R.id.item_info)
+        val itemInfo = view.findViewById<TextView>(R.id.headerTextView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListItemHolder {
