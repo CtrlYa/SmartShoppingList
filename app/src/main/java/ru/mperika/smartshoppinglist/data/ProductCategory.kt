@@ -2,11 +2,10 @@ package ru.mperika.smartshoppinglist.data
 
 import androidx.room.TypeConverter
 
-enum class ProductCategory(var id: Int, name: String) {
+enum class ProductCategory(var id: Int, var catName: String) {
     MEAL(1,"Еда без срока годности"),
     MEAL_WITH_EXP_DATE(2, "Еда со сроком годности"),
     OTHER(999, "Другое");
-
 
 
 
@@ -24,6 +23,11 @@ enum class ProductCategory(var id: Int, name: String) {
             return value?: OTHER
         }
     }
+
+    override fun toString(): String {
+        return catName
+    }
+
 
 }
 

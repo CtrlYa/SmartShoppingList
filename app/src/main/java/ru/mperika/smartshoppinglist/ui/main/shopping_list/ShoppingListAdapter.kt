@@ -1,8 +1,10 @@
 package ru.mperika.smartshoppinglist.ui.main.shopping_list
 
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -13,7 +15,30 @@ class ShoppingListAdapter() : RecyclerView.Adapter<ShoppingListAdapter.ListItemH
     private val values: MutableList<String> = mutableListOf()
 
     inner class ListItemHolder(view: View) : ViewHolder(view) {
-        val itemInfo = view.findViewById<TextView>(R.id.headerTextView)
+        val itemInCart = view.findViewById<CheckBox>(R.id.inCartBox)
+        val itemHeader = view.findViewById<TextView>(R.id.headerTextView)
+        val itemDescription = view.findViewById<TextView>(R.id.detailTextView)
+
+        init {
+            itemInCart.setOnCheckedChangeListener { buttonView, isChecked ->
+                if (isChecked) {
+                    itemHeader.apply {
+                        paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                    }
+                    itemDescription.apply {
+                        paintFlags = paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                    }
+                } else {
+
+                    itemHeader.apply {
+                        paintFlags = paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                    }
+                    itemDescription.apply {
+                        paintFlags = paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                    }
+                }
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListItemHolder {
@@ -24,7 +49,7 @@ class ShoppingListAdapter() : RecyclerView.Adapter<ShoppingListAdapter.ListItemH
 
     override fun onBindViewHolder(holder: ListItemHolder, position: Int) {
 
-        holder.itemInfo.text = values[position];
+        holder.itemHeader.text = values[position];
     }
 
     override fun getItemCount() = values.size

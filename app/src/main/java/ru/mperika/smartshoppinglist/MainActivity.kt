@@ -1,5 +1,6 @@
 package ru.mperika.smartshoppinglist
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.widget.ViewPager2
@@ -11,6 +12,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import ru.mperika.smartshoppinglist.ui.edit.ProductEditActivity
 
 class MainActivity : FragmentActivity() {
 
@@ -25,12 +27,15 @@ class MainActivity : FragmentActivity() {
             tab.text = TAB_TITLES[position].toString()
         }.attach()
         val fab: FloatingActionButton = findViewById(R.id.fab)
-
+        var counter = 0
         fab.setOnClickListener { view ->
             if (viewPager.currentItem == 1) {
+                counter++
                 val myFragment = supportFragmentManager.findFragmentByTag("f" + viewPager.currentItem)
                 myFragment?.let {
-                    (it as ShoppingListFragment).addData("qqq")
+//                    (it as ShoppingListFragment).addData("Элемент списка $counter")
+                    var intent = Intent(it.context, ProductEditActivity::class.java)
+                    startActivity(intent)
                 }
             } else {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
