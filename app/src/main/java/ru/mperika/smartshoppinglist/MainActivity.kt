@@ -21,18 +21,24 @@ class MainActivity : FragmentActivity() {
         val viewPager: ViewPager2 = findViewById(R.id.view_pager)
         viewPager.adapter = sectionsPagerAdapter
         val tabView = findViewById<TabLayout>(R.id.tabs)
-        TabLayoutMediator(tabView, viewPager) {tab, position ->
+        TabLayoutMediator(tabView, viewPager) { tab, position ->
             tab.text = TAB_TITLES[position].toString()
         }.attach()
         val fab: FloatingActionButton = findViewById(R.id.fab)
 
         fab.setOnClickListener { view ->
-            val myFragment = supportFragmentManager.findFragmentByTag("f" + 1)
-            myFragment?.let {
-                (it as ShoppingListFragment).addData("qqq")
+            if (viewPager.currentItem == 1) {
+                val myFragment = supportFragmentManager.findFragmentByTag("f" + viewPager.currentItem)
+                myFragment?.let {
+                    (it as ShoppingListFragment).addData("qqq")
+                }
+            } else {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show()
             }
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+            Snackbar.make(view, "Fragment is: ${viewPager.currentItem}", Snackbar.LENGTH_SHORT)
                     .setAction("Action", null).show()
+
         }
     }
 }
