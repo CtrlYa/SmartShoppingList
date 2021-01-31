@@ -3,7 +3,9 @@ package ru.mperika.smartshoppinglist.ui.edit
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
+import android.widget.AdapterView.OnItemSelectedListener
 import androidx.appcompat.app.AppCompatActivity
 import com.example.smartshoppinglist.R
 import ru.mperika.smartshoppinglist.data.ProductCategory
@@ -11,26 +13,48 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class ProductEditActivity : AppCompatActivity() {
+    private lateinit var imageView: ImageView
+    private lateinit var nameText: TextView
+    private lateinit var brandText: TextView
+    private lateinit var quantityFld: TextView
+    private lateinit var typeSpnr: Spinner
+    private lateinit var fridgeSwitch: Switch
+    private lateinit var calendarView: TextView
+    private lateinit var saveBtn: Button
+    private lateinit var cancelBtn: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_edit)
 
-        val imageView = findViewById<ImageView>(R.id.imageView)
-        val nameText = findViewById<TextView>(R.id.name_text)
-        val brandText = findViewById<TextView>(R.id.brand_text)
-        val quantityFld = findViewById<TextView>(R.id.quantity_fld)
+        imageView = findViewById(R.id.imageView)
+        nameText = findViewById(R.id.name_text)
+        brandText = findViewById(R.id.brand_text)
+        quantityFld = findViewById(R.id.quantity_fld)
         createTypeSpinner()
 
         fridgeSectionCreate()
-        val saveBtn = findViewById<Button>(R.id.save_button)
-        val cancelBtn = findViewById<Button>(R.id.cancel_button1)
+        typeSpnr.onItemSelectedListener = object: OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?,
+                position: Int, id: Long) {
+
+                fridgeSwitch.isChecked = typeSpnr.selectedItem == ProductCategory.MEAL_WITH_EXP_DATE
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+        }
+        saveBtn = findViewById(R.id.save_button)
+        cancelBtn = findViewById(R.id.cancel_button1)
     }
 
     private fun createTypeSpinner() {
-        val typeSpnr = findViewById<Spinner>(R.id.type_spinner)
+        typeSpnr = findViewById(R.id.type_spinner)
         val adapter = ArrayAdapter(
             this,
-            android.R.layout.simple_spinner_item,
+            R.layout.spinner_item,
             ProductCategory.values()
         )
         typeSpnr.adapter = adapter
@@ -38,8 +62,9 @@ class ProductEditActivity : AppCompatActivity() {
     }
 
     private fun fridgeSectionCreate() {
-        val fridgeSwitch = findViewById<Switch>(R.id.fridge_enabler)
-        val calendarView = findViewById<TextView>(R.id.calendar_view)
+        fridgeSwitch = findViewById(R.id.fridge_enabler)
+        calendarView = findViewById(R.id.calendar_view)
+        calendarView.isClickable = false
 
         val calendar = Calendar.getInstance()
         val datePickerDialogListener = DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
@@ -62,13 +87,8 @@ class ProductEditActivity : AppCompatActivity() {
 
 
         fridgeSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
-            if (isChecked) {
-                Log.d("СЛУШАТЕЛЬ ПЕРЕКЛЮЧАТЕЛЯ", "Активировано")
-                calendarView.isClickable = true
-            } else {
-                Log.d("СЛУШАТЕЛЬ ПЕРЕКЛЮЧАТЕЛЯ", "Деактивировано")
-                calendarView.isClickable = false
-            }
+            calendarView.isClickable = isChecked
+            Log.d("РЕАКЦИЯ СВИЧА", "isClixkable: ${calendarView.isClickable}")
         }
     }
 }
