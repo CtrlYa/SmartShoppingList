@@ -11,10 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.smartshoppinglist.R
+import ru.mperika.smartshoppinglist.data.Product
 
 class ShoppingListFragment() : Fragment() {
 
-    private final val TAG = "ShoppingList";
+    private val TAG = "ShoppingList";
     private lateinit var shoppingListViewModel: ShoppingListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +31,7 @@ class ShoppingListFragment() : Fragment() {
         val shoppingListAdapter = ShoppingListAdapter()
         recyclerView.adapter = shoppingListAdapter
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        shoppingListViewModel.getData().observe(this, Observer {
+        shoppingListViewModel.getData().observe(viewLifecycleOwner, Observer {
             Log.d(TAG, "onCreateView: ${it.size}")
             shoppingListAdapter.setValues(it)
             shoppingListAdapter.notifyDataSetChanged()
@@ -39,8 +40,8 @@ class ShoppingListFragment() : Fragment() {
         return root
     }
 
-    fun addData(str: String) {
-        shoppingListViewModel.addStr(str)
+    fun addData(product: Product) {
+        shoppingListViewModel.addProduct(product)
     }
 
 
@@ -56,13 +57,8 @@ class ShoppingListFragment() : Fragment() {
          * number.
          */
         @JvmStatic
-        fun newInstance(sectionNumber: Int): ShoppingListFragment {
+        fun newInstance(): ShoppingListFragment {
             return ShoppingListFragment()
-//                    .apply {
-//                arguments = Bundle().apply {
-//                    putInt(ARG_SECTION_NUMBER, sectionNumber)
-//                }
-//            }
         }
     }
 }

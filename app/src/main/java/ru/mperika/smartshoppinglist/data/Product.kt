@@ -11,9 +11,6 @@ import java.util.*
 @Entity(tableName = "products")
 @TypeConverters(ProductCategory::class, LocalDateTypeConverter::class)
 data class Product(
-        @PrimaryKey(autoGenerate = true)
-        @ColumnInfo(name = "pr_id")
-        var id: Int,
         @ColumnInfo(name = "pr_name")
         var productUserName: String,
         @ColumnInfo(name = "pr_brand")
@@ -26,4 +23,8 @@ data class Product(
         var expirationDate: Date,
         @ColumnInfo(name = "pr_image", defaultValue = "")
         var imagePath: String
-        )
+        ) {
+        @PrimaryKey(autoGenerate = true)
+        @ColumnInfo(name = "pr_id")
+        var id: Long? = null
+}

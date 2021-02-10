@@ -9,10 +9,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.smartshoppinglist.R
+import ru.mperika.smartshoppinglist.data.Product
 
 class ShoppingListAdapter() : RecyclerView.Adapter<ShoppingListAdapter.ListItemHolder>() {
 
-    private val values: MutableList<String> = mutableListOf()
+    private val values: MutableList<Product> = mutableListOf()
 
     inner class ListItemHolder(view: View) : ViewHolder(view) {
         val itemInCart = view.findViewById<CheckBox>(R.id.inCartBox)
@@ -49,12 +50,12 @@ class ShoppingListAdapter() : RecyclerView.Adapter<ShoppingListAdapter.ListItemH
 
     override fun onBindViewHolder(holder: ListItemHolder, position: Int) {
 
-        holder.itemHeader.text = values[position];
+        holder.itemHeader.text = values[position].productUserName;
     }
 
     override fun getItemCount() = values.size
 
-    fun setValues(vals: MutableList<String>) {
+    fun setValues(vals: MutableList<Product>) {
         values.clear()
         values.addAll(vals)
     }

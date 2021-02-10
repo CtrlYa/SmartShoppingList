@@ -24,7 +24,7 @@ class SectionsPagerAdapter(fragmentActivity: FragmentActivity)
         // Return a PlaceholderFragment (defined as a static inner class below).
         return when(position) {
             0 -> FridgeFragment.newInstance(position + 1)
-            1 -> ShoppingListFragment.newInstance(position + 1)
+            1 -> ShoppingListFragment.newInstance()
             else -> FridgeFragment.newInstance(position + 1)
         }
     }
