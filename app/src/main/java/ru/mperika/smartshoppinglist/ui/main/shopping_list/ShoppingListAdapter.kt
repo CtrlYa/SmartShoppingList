@@ -19,6 +19,7 @@ class ShoppingListAdapter() : RecyclerView.Adapter<ShoppingListAdapter.ListItemH
         val itemInCart = view.findViewById<CheckBox>(R.id.inCartBox)
         val itemHeader = view.findViewById<TextView>(R.id.headerTextView)
         val itemDescription = view.findViewById<TextView>(R.id.detailTextView)
+        val itemQuantity = view.findViewById<TextView>(R.id.quantityText)
 
         init {
             itemInCart.setOnCheckedChangeListener { buttonView, isChecked ->
@@ -51,6 +52,8 @@ class ShoppingListAdapter() : RecyclerView.Adapter<ShoppingListAdapter.ListItemH
     override fun onBindViewHolder(holder: ListItemHolder, position: Int) {
 
         holder.itemHeader.text = values[position].productUserName;
+        holder.itemDescription.text = "Бренд: ${values[position].productBrand} Категория: ${values[position].category.catName}"
+        holder.itemQuantity.text = values[position].quantity.toString()
     }
 
     override fun getItemCount() = values.size

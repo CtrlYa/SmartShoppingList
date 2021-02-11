@@ -5,4 +5,8 @@
     <string name="product_quantity">Количество:</string>
     <string name="save_button">Сохранить</string>
     <string name="cancel_button">Отмена</string>
+    <string name="brand">Бренд</string>
+    <string name="name">Название</string>
+    <string name="image">Изображение</string>
+    <string name="fridge">Холодильник</string>
 </resources>

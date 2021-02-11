@@ -16,11 +16,13 @@ import ru.mperika.smartshoppinglist.data.Product
 class ShoppingListFragment() : Fragment() {
 
     private val TAG = "ShoppingList";
+    private lateinit var viewModelFactory: ShoppingListViewModelFactory
     private lateinit var shoppingListViewModel: ShoppingListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        shoppingListViewModel = ViewModelProvider(this).get(ShoppingListViewModel::class.java)
+        viewModelFactory = activity?.let { ShoppingListViewModelFactory(it.application) }!!
+        shoppingListViewModel = ViewModelProvider(this, viewModelFactory).get(ShoppingListViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +44,10 @@ class ShoppingListFragment() : Fragment() {
 
     fun addData(product: Product) {
         shoppingListViewModel.addProduct(product)
+    }
+
+    fun updateAll() {
+        shoppingListViewModel.updateAllData()
     }
 
 

@@ -112,7 +112,7 @@ class ProductEditActivity : AppCompatActivity() {
         val datePickerDialogListener =
             DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
                 calendar.set(year, month, dayOfMonth)
-                val dateFormat = "dd/MM/yyyy"
+                val dateFormat = "dd.MM.yyyy"
                 val sdf = SimpleDateFormat(dateFormat, Locale.US)
 
                 calendarView.text = sdf.format(calendar.time)
@@ -139,15 +139,18 @@ class ProductEditActivity : AppCompatActivity() {
 
     private fun createProduct(): Product {
         return Product(
-            nameText.text as String, brandText.text.toString(),
-            typeSpnr.selectedItem as ProductCategory, quantityFld.text.toString().toInt(),
+            nameText.text.toString(),
+            brandText.text.toString(),
+            typeSpnr.selectedItem as ProductCategory,
+            quantityFld.text.toString().toInt(),
             SimpleDateFormat("dd.MM.yyyy").parse(calendarView.text.let {
                 if (it == null || it.isEmpty()) {
                     "01.01.1970" //TODO: Придумать что-то получше
                 } else {
                     it.toString()
                 }
-            }), ""
+            }),
+            ""
         )
     }
 }

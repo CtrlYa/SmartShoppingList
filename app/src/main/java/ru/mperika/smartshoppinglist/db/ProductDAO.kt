@@ -7,7 +7,7 @@ import ru.mperika.smartshoppinglist.data.Product
 interface ProductDAO {
 
     @Query("SELECT * FROM products")
-    suspend fun getAllProducts(): List<Product>
+    suspend fun getAllProducts(): MutableList<Product>
 
     @Update
     suspend fun update(vararg products: Product)
