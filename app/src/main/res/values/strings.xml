@@ -1,12 +1,10 @@
 <resources>
     <string name="app_name">Smart Shopping List</string>
     <string name="tab_text_1">Холодос</string>
-    <string name="tab_text_2">Список покупок</string>
     <string name="product_quantity">Количество:</string>
     <string name="save_button">Сохранить</string>
     <string name="cancel_button">Отмена</string>
     <string name="brand">Бренд</string>
     <string name="name">Название</string>
     <string name="image">Изображение</string>
-    <string name="fridge">Холодильник</string>
 </resources>

@@ -26,8 +26,8 @@ class ShoppingListFragment() : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?
-    ): View? {
+                              savedInstanceState: Bundle?): View? {
+
         val root = inflater.inflate(R.layout.fragment_shopping_list, container, false)
         val recyclerView = root.findViewById<RecyclerView>(R.id.shopping_list)
         val shoppingListAdapter = ShoppingListAdapter()

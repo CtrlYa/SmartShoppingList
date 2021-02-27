@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="all_items">Все продукты</string>
+    <string name="fridge">Холодильник</string>
+    <string name="shop_list">Список покупок</string>
+</resources>
