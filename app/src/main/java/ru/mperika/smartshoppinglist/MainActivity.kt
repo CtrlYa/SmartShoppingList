@@ -3,29 +3,23 @@ package ru.mperika.smartshoppinglist
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
+import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.viewpager2.widget.ViewPager2
 import com.example.smartshoppinglist.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import ru.mperika.smartshoppinglist.ui.edit.ProductEditActivity
-import ru.mperika.smartshoppinglist.ui.main.SectionsPagerAdapter
-import ru.mperika.smartshoppinglist.ui.main.TAB_TITLES
 import ru.mperika.smartshoppinglist.ui.main.shopping_list.ShoppingListFragment
 
 class MainActivity : AppCompatActivity() {
@@ -46,6 +40,27 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(setOf(R.id.fridgeFragment), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        navView.setNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.menu_all_items -> {
+                    Toast.makeText(applicationContext, "Элемент меню - ВСЕ ЭЛЕМЕНТЫ", Toast.LENGTH_SHORT).show()
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                    true
+                }
+                R.id.menu_shop_list -> {
+                    Toast.makeText(applicationContext, "Элемент меню - СПИСОК ПОКУПОК", Toast.LENGTH_SHORT).show()
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                    true
+                }
+                R.id.menu_fridge -> {
+                    Toast.makeText(applicationContext, "Элемент меню - ХОЛОДОС", Toast.LENGTH_SHORT).show()
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                    true
+                }
+                else -> super.onOptionsItemSelected(it)
+            }
+
+        }
 //        val sectionsPagerAdapter = SectionsPagerAdapter(this)
 //        val viewPager: ViewPager2 = findViewById(R.id.view_pager)
 //        viewPager.adapter = sectionsPagerAdapter
@@ -57,9 +72,9 @@ class MainActivity : AppCompatActivity() {
 //        }.attach()
 //
 //
-//        val fab: FloatingActionButton = findViewById(R.id.fab)
-//        var counter = 0
-//        fab.setOnClickListener { view ->
+        val fab: FloatingActionButton = findViewById(R.id.fab)
+        var counter = 0
+        fab.setOnClickListener { view ->
 //            if (viewPager.currentItem == 1) {
 //                counter++
 //                val myFragment = supportFragmentManager.findFragmentByTag("f" + viewPager.currentItem)
@@ -71,10 +86,10 @@ class MainActivity : AppCompatActivity() {
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show()
 //            }
-//            Snackbar.make(view, "Fragment is: ${viewPager.currentItem}", Snackbar.LENGTH_SHORT)
-//                    .setAction("Action", null).show()
-//
-//        }
+            Snackbar.make(view, "Fragment is: ", Snackbar.LENGTH_SHORT)
+                    .setAction("Action", null).show()
+
+        }
 //
 //        tabView.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener {
 //            override fun onTabSelected(tab: TabLayout.Tab?) {
