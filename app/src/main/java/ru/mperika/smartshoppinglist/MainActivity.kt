@@ -3,7 +3,6 @@ package ru.mperika.smartshoppinglist
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -19,7 +18,6 @@ import com.example.smartshoppinglist.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
-import ru.mperika.smartshoppinglist.ui.edit.ProductEditActivity
 import ru.mperika.smartshoppinglist.ui.main.shopping_list.ShoppingListFragment
 
 class MainActivity : AppCompatActivity() {
@@ -37,23 +35,37 @@ class MainActivity : AppCompatActivity() {
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
 
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.fridgeFragment), drawerLayout)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.allItemsFragment, R.id.shoppingListFragment),
+            drawerLayout
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         navView.setNavigationItemSelectedListener {
-            when(it.itemId) {
+            when (it.itemId) {
                 R.id.menu_all_items -> {
-                    Toast.makeText(applicationContext, "Элемент меню - ВСЕ ЭЛЕМЕНТЫ", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        applicationContext,
+                        "Элемент меню - ВСЕ ЭЛЕМЕНТЫ",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    navController.navigate(R.id.allItemsFragment)
                     drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
                 R.id.menu_shop_list -> {
-                    Toast.makeText(applicationContext, "Элемент меню - СПИСОК ПОКУПОК", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        applicationContext,
+                        "Элемент меню - СПИСОК ПОКУПОК",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    navController.navigate(R.id.shoppingListFragment)
                     drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
                 R.id.menu_fridge -> {
-                    Toast.makeText(applicationContext, "Элемент меню - ХОЛОДОС", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Элемент меню - ХОЛОДОС", Toast.LENGTH_SHORT)
+                        .show()
                     drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
@@ -87,7 +99,7 @@ class MainActivity : AppCompatActivity() {
 //                        .setAction("Action", null).show()
 //            }
             Snackbar.make(view, "Fragment is: ", Snackbar.LENGTH_SHORT)
-                    .setAction("Action", null).show()
+                .setAction("Action", null).show()
 
         }
 //

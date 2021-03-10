@@ -16,10 +16,10 @@ class ShoppingListAdapter() : RecyclerView.Adapter<ShoppingListAdapter.ListItemH
     private val values: MutableList<Product> = mutableListOf()
 
     inner class ListItemHolder(view: View) : ViewHolder(view) {
-        val itemInCart = view.findViewById<CheckBox>(R.id.inCartBox)
-        val itemHeader = view.findViewById<TextView>(R.id.headerTextView)
-        val itemDescription = view.findViewById<TextView>(R.id.detailTextView)
-        val itemQuantity = view.findViewById<TextView>(R.id.quantityText)
+        private val itemInCart: CheckBox = view.findViewById(R.id.inCartBox)
+        val itemHeader: TextView = view.findViewById(R.id.headerTextView)
+        val itemDescription: TextView = view.findViewById(R.id.detailTextView)
+        val itemQuantity: TextView = view.findViewById(R.id.quantityText)
 
         init {
             itemInCart.setOnCheckedChangeListener { buttonView, isChecked ->
@@ -44,14 +44,14 @@ class ShoppingListAdapter() : RecyclerView.Adapter<ShoppingListAdapter.ListItemH
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListItemHolder {
-        var view = LayoutInflater.from(parent.context)
+        val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.shopping_list_item, parent, false)
         return ListItemHolder(view)
     }
 
     override fun onBindViewHolder(holder: ListItemHolder, position: Int) {
 
-        holder.itemHeader.text = values[position].productUserName;
+        holder.itemHeader.text = values[position].productUserName
         holder.itemDescription.text = "Бренд: ${values[position].productBrand} Категория: ${values[position].category.catName}"
         holder.itemQuantity.text = values[position].quantity.toString()
     }

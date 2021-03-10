@@ -3,10 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_navigation"
-    app:startDestination="@id/fridgeFragment">
+    app:startDestination="@id/allItemsFragment">
     <fragment
-        android:id="@+id/fridgeFragment"
-        android:name="ru.mperika.smartshoppinglist.ui.main.fridge.FridgeFragment"
-        android:label="fragment_shopping_list"
-        tools:layout="@layout/fragment_shopping_list" />
+        android:id="@+id/allItemsFragment"
+        android:name="ru.mperika.smartshoppinglist.ui.main.all_items.AllItemsFragment"
+        android:label="all_items_fragment"
+        tools:layout="@layout/all_items_fragment" />
+    <fragment
+        android:id="@+id/shoppingListFragment"
+        android:name="ru.mperika.smartshoppinglist.ui.main.shopping_list.ShoppingListFragment"
+        android:label="ShoppingListFragment" />
 </navigation>

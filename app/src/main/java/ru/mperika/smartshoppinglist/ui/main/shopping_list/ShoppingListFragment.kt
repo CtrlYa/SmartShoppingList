@@ -15,7 +15,7 @@ import ru.mperika.smartshoppinglist.data.Product
 
 class ShoppingListFragment() : Fragment() {
 
-    private val TAG = "ShoppingList";
+    private val TAG = "SHOPPING LIST"
     private lateinit var viewModelFactory: ShoppingListViewModelFactory
     private lateinit var shoppingListViewModel: ShoppingListViewModel
 
@@ -52,16 +52,6 @@ class ShoppingListFragment() : Fragment() {
 
 
     companion object {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private const val ARG_SECTION_NUMBER = "section_number"
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
         @JvmStatic
         fun newInstance(): ShoppingListFragment {
             return ShoppingListFragment()

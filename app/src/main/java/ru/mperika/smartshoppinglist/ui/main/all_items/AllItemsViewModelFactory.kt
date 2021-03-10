@@ -1,0 +1,11 @@
+package ru.mperika.smartshoppinglist.ui.main.all_items
+
+import android.app.Application
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+
+class AllItemsViewModelFactory(val application: Application): ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        return AllItemsViewModel(application) as T
+    }
+}
